@@ -27,14 +27,15 @@ class AuthController extends Controller
      */
     public function login()
     {
-        $credentials = request(['email', 'password']);
-
+        $data = json_decode(file_get_contents("php://input"));
+        $credentials = (array)$data;
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
         $user = User::where('email',$credentials['email'])->first();
         $user->token = $token;
         $user->save();
+        print_r($user);
         return $this->respondWithToken($token);
     }
 

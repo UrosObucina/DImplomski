@@ -15,6 +15,15 @@ class MaterialRequirementController extends Controller
         $this->material = new MaterialRequirement();
     }
 
+    public function getAll()
+    {
+        return $this->material->getAll();
+    }
+
+    public function getOne($id)
+    {
+        return $this->material->getOne($id);
+    }
     public function insertMaterialRequirement()
     {
         $this->material->insertMaterialRequirement();

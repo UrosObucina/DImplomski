@@ -20,7 +20,7 @@ class StudentMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = User::where("token", $request->header('Authorization'))->first();
+        $user = User::where("token",'=',$request->header('Authorization'))->first();
         JWTAuth::setToken($user->token);
         $token = JWTAuth::getToken();
         $apy = JWTAuth::getPayload($token)->toArray();

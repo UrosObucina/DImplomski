@@ -23,14 +23,12 @@ class DeliveryNote extends Model
 
     public function getOne($id)
     {
-        $delivety = DeliveryNote::where($this->primaryKey, $id)->first();
-        dd($delivety->stockDelivery());
+        return DeliveryNote::where($this->primaryKey, $id)->first();
     }
 
     public function getAll()
     {
-        $delivety = DeliveryNote::all();
-        dd($delivety->stockDelivery());
+       return $delivery = DeliveryNote::all();
     }
 
     public function insertDeliveryNote()
